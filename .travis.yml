@@ -30,10 +30,11 @@ jobs:
         # upload binaries to bintray
         - provider: script
           install:
-           - env
-           - echo "TRAVIS_TAG=($TRAVIS_TAG)"
-           - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
+           - true
           script:
+            - env 
+            - echo "TRAVIS_TAG=($TRAVIS_TAG)"
+            - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
             - echo "on master"
           skip_cleanup: true
           on:
@@ -41,10 +42,11 @@ jobs:
         # upload gziped binaries to github release page
         - provider: script
           install:
-           - env
-           - echo "TRAVIS_TAG=($TRAVIS_TAG)"
-           - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
+           - true
           script:
+            - env 
+            - echo "TRAVIS_TAG=($TRAVIS_TAG)"
+            - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
             - echo "on tags"
           skip_cleanup: true
           on:
@@ -53,10 +55,11 @@ jobs:
         - provider: script
           skip_cleanup: true
           install:
-           - env
-           - echo "TRAVIS_TAG=($TRAVIS_TAG)"
-           - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
+           - true
           script:
+            - env 
+            - echo "TRAVIS_TAG=($TRAVIS_TAG)"
+            - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
             - echo "on master and tags"
           on:
             # run this on tag and on master
