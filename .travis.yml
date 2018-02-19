@@ -31,6 +31,8 @@ jobs:
         - provider: script
           install:
            - env
+           - echo "TRAVIS_TAG=($TRAVIS_TAG)"
+           - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
           script:
             - echo "on master"
           skip_cleanup: true
@@ -40,6 +42,8 @@ jobs:
         - provider: script
           install:
            - env
+           - echo "TRAVIS_TAG=($TRAVIS_TAG)"
+           - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
           script:
             - echo "on tags"
           skip_cleanup: true
@@ -50,6 +54,8 @@ jobs:
           skip_cleanup: true
           install:
            - env
+           - echo "TRAVIS_TAG=($TRAVIS_TAG)"
+           - echo "TRAVIS_BRANCH=($TRAVIS_BRANCH) "
           script:
             - echo "on master and tags"
           on:
