@@ -41,7 +41,14 @@ jobs:
         - provider: script
           skip_cleanup: true
           script:
-            - echo "on master and tags"
+            - echo "on master2"
           on:
             # run this on tag and on master
-            condition: $TRAVIS_TAG!=""
+            branch: master
+        - provider: script
+          skip_cleanup: true
+          script:
+            - echo "on tags"
+          on:
+            # run this on tag and on master
+            tags: true
