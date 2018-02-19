@@ -30,7 +30,7 @@ jobs:
         # upload binaries to bintray
         - provider: script
           install:
-           - true
+           - env
           script:
             - echo "on master"
           skip_cleanup: true
@@ -39,7 +39,7 @@ jobs:
         # upload gziped binaries to github release page
         - provider: script
           install:
-           - true
+           - env
           script:
             - echo "on tags"
           skip_cleanup: true
@@ -49,9 +49,9 @@ jobs:
         - provider: script
           skip_cleanup: true
           install:
-           - true
+           - env
           script:
             - echo "on master and tags"
           on:
-            tags: true
-            branch: master
+            # run this on tag and on master
+            condition: $TRAVIS_BRANCH == "master" || $TRAVIS_TAG 
