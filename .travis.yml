@@ -1,0 +1,57 @@
+dist: trusty
+sudo: required
+
+language: go
+
+env:
+jobs:
+  include:
+    # YAML alias, for settings shared across the tests
+    - &base-test
+      stage: test
+      go: 1.8
+      install:
+        - true
+      script:
+        - true
+
+    - <<: *base-test
+      go: 1.9
+
+    - stage: deploy
+      go_import_path:  github.com/redhat-developer/ocdev
+      go: 1.9
+      install:
+        - true
+      script: skip
+      before_deploy:
+        - true
+      deploy:
+        # upload binaries to bintray
+        - provider: script
+          install:
+           - true
+          script:
+            - echo "on master"
+          skip_cleanup: true
+          on:
+            on: master
+        # upload gziped binaries to github release page
+        - provider: script
+          install:
+           - true
+          script:
+            - echo "on tags"
+          skip_cleanup: true
+          on:
+            tags: true
+        # upload packages to bintray repositories
+        - provider: script
+          skip_cleanup: true
+          install:
+           - true
+          script:
+            - echo "on master and tags"
+          on:
+            tags: true
+            branch: master
