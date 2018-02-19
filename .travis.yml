@@ -44,4 +44,4 @@ jobs:
             - echo "on master and tags"
           on:
             # run this on tag and on master
-            condition: $TRAVIS_BRANCH="master" || $TRAVIS_TAG!=""
+            condition: $TRAVIS_TAG!=""
